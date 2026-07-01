@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tani-sumsum.github.io/-HP/sitemap.xml
