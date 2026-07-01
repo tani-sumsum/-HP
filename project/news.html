@@ -199,28 +199,6 @@
   border: 1px solid var(--line);
 }
 
-/* Pagination */
-.pagination {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 48px;
-}
-.pagination a {
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--line);
-  background: var(--white);
-  color: var(--text);
-  font-family: var(--serif-en);
-  font-size: 14px;
-  transition: all 0.2s;
-}
-.pagination a:hover { background: var(--paper-warm); color: var(--navy); }
-.pagination a.is-current { background: var(--navy); color: var(--white); border-color: var(--navy); }
-
 @media (max-width: 1024px) {
   .news-page__inner { grid-template-columns: 1fr; }
   .news-side { position: static; flex-direction: row; flex-wrap: wrap; }
@@ -394,13 +372,6 @@
         </a>
       </div>
 
-      <div class="pagination">
-        <a href="#">‹</a>
-        <a href="#" class="is-current">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">›</a>
-      </div>
     </div>
 
     <aside class="news-side">
@@ -408,16 +379,16 @@
         <h3>参照元カテゴリー</h3>
         <span class="en">Category</span>
         <ul>
-          <li><a href="#">日本年金機構 <span class="y">5</span></a></li>
-          <li><a href="#">協会けんぽ <span class="y">1</span></a></li>
-          <li><a href="#">厚生労働省 <span class="y">1</span></a></li>
+          <li><a href="#" data-filter="nenkin">日本年金機構 <span class="y">5</span></a></li>
+          <li><a href="#" data-filter="kenpo">協会けんぽ <span class="y">1</span></a></li>
+          <li><a href="#" data-filter="mhlw">厚生労働省 <span class="y">1</span></a></li>
         </ul>
       </div>
       <div class="side-block">
         <h3>月別アーカイブ</h3>
         <span class="en">Archive</span>
         <ul>
-          <li><a href="#">2026年 5月 <span class="y">07</span></a></li>
+          <li><a href="#" data-filter="all">2026年 5月 <span class="y">07</span></a></li>
         </ul>
       </div>
       <div class="side-block">
@@ -511,20 +482,26 @@
 </footer>
 
 <script>
-// Simple category filter
+// Category filter — driven by the tabs and by the sidebar's category/archive shortcuts
+const newsTabsEl = document.querySelector('.news-tabs');
 const tabs = document.querySelectorAll('.news-tabs button');
+const sideFilterLinks = document.querySelectorAll('.news-side [data-filter]');
 const articles = document.querySelectorAll('#articles .article');
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('is-active'));
-    tab.classList.add('is-active');
-    const filter = tab.getAttribute('data-filter');
-    articles.forEach(a => {
-      const cat = a.getAttribute('data-cat');
-      a.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
-    });
+
+function applyNewsFilter(filter) {
+  tabs.forEach(t => t.classList.toggle('is-active', t.getAttribute('data-filter') === filter));
+  articles.forEach(a => {
+    const cat = a.getAttribute('data-cat');
+    a.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
   });
-});
+}
+
+tabs.forEach(tab => tab.addEventListener('click', () => applyNewsFilter(tab.getAttribute('data-filter'))));
+sideFilterLinks.forEach(link => link.addEventListener('click', (e) => {
+  e.preventDefault();
+  applyNewsFilter(link.getAttribute('data-filter'));
+  newsTabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}));
 </script>
 
 <script>
