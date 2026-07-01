@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>業務内容 | 谷川社会保険労務士事務所</title>
+<meta name="description" content="労働社会保険手続き代行、給与計算、就業規則の作成・変更、労務相談、年金相談、助成金申請サポート。青森県十和田市の社労士事務所が提供する業務内容。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+/* Services page */
+
+/* Index strip */
+.svc-index {
+  background: var(--paper);
+  padding: 0;
+  border-bottom: 1px solid var(--line);
+}
+.svc-index__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+}
+.svc-index a {
+  padding: 28px 16px;
+  text-align: center;
+  color: var(--text-soft);
+  border-right: 1px solid var(--line);
+  transition: all 0.25s;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.svc-index a:first-child { border-left: 1px solid var(--line); }
+.svc-index a:hover { background: var(--paper-warm); color: var(--navy); }
+.svc-index a .num {
+  font-family: var(--serif-en);
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0.2em;
+  color: var(--gold-deep);
+}
+.svc-index a .name {
+  font-family: var(--serif-jp);
+  font-size: 13.5px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Service block */
+.svc-block {
+  padding: 130px 32px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.svc-block:nth-child(odd) { background: var(--white); }
+.svc-block:nth-child(even) { background: var(--paper-light); }
+
+.svc-block__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 80px;
+  align-items: flex-start;
+}
+.svc-block__label {
+  position: sticky;
+  top: 100px;
+}
+.svc-block__num {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 16px;
+  letter-spacing: 0.3em;
+  color: var(--gold-deep);
+  margin-bottom: 14px;
+}
+.svc-block__title {
+  font-family: var(--serif-jp);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.svc-block__en {
+  font-family: var(--serif-en);
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 0.2em;
+  color: var(--text-mute);
+  text-transform: uppercase;
+}
+.svc-block__icon {
+  margin-top: 32px;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 4 / 3;
+  border: none;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  display: block;
+  position: relative;
+  box-shadow: var(--shadow-md);
+}
+.svc-block__icon::before {
+  content: "";
+  position: absolute;
+  top: 10px; left: 10px;
+  width: 8px; height: 8px;
+  border-top: 2px solid var(--white);
+  border-left: 2px solid var(--white);
+  z-index: 2;
+  opacity: 0.85;
+}
+.svc-block__icon::after {
+  content: "";
+  position: absolute;
+  bottom: 10px; right: 10px;
+  width: 8px; height: 8px;
+  border-bottom: 2px solid var(--white);
+  border-right: 2px solid var(--white);
+  z-index: 2;
+  opacity: 0.85;
+}
+.svc-block__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.85) brightness(1.02);
+}
+@media (max-width: 1024px) {
+  .svc-block__icon { max-width: 100%; }
+}
+
+.svc-block__body p {
+  font-size: 15px;
+  line-height: 2.2;
+  color: var(--text);
+  margin: 0 0 18px;
+}
+.svc-block__body p.lead {
+  font-family: var(--serif-jp);
+  font-size: 19px;
+  line-height: 2;
+  color: var(--ink);
+  margin-bottom: 28px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.svc-items {
+  margin: 32px 0 0;
+  border-top: 1px solid var(--line);
+}
+.svc-items dt {
+  font-family: var(--serif-jp);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gold-deep);
+  padding: 18px 0 6px;
+}
+.svc-items dd {
+  margin: 0;
+  padding: 0 0 18px;
+  border-bottom: 1px solid var(--line);
+}
+.svc-items ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 24px;
+}
+.svc-items li {
+  font-size: 13.5px;
+  color: var(--text);
+  padding-left: 18px;
+  position: relative;
+  line-height: 2;
+}
+.svc-items li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 8px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.svc-block__quote {
+  margin-top: 36px;
+  padding: 24px 28px;
+  background: var(--paper-warm);
+  border-left: 3px solid var(--gold);
+  font-family: var(--serif-jp);
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+.svc-block:nth-child(even) .svc-block__quote { background: var(--white); }
+
+/* Process */
+.process {
+  background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary) 55%, var(--accent) 130%);
+  color: var(--white);
+  padding: 130px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.process::before {
+  content: "";
+  position: absolute;
+  top: -100px; right: -80px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(214, 178, 119, 0.45) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.process::after {
+  content: "";
+  position: absolute;
+  bottom: -120px; left: -60px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(168, 100, 58, 0.35) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.process__inner { max-width: var(--max); margin: 0 auto; position: relative; }
+.process__steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-top: 48px;
+  position: relative;
+}
+.process__steps::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  z-index: 0;
+  border-radius: var(--r-pill);
+}
+.proc-step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 12px;
+}
+.proc-step__circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--white);
+  border: none;
+  margin: 0 auto 24px;
+  display: grid;
+  place-items: center;
+  font-family: var(--sans-en);
+  color: var(--primary-deep);
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+.proc-step__title {
+  font-family: var(--display-jp);
+  font-size: 17px;
+  color: var(--white);
+  margin: 0 0 12px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+.proc-step__body {
+  font-size: 13px;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.95;
+  margin: 0;
+}
+
+/* CTA */
+.cta-strip {
+  background: var(--paper);
+  padding: 80px 32px;
+  text-align: center;
+}
+.cta-strip h2 {
+  font-family: var(--serif-jp);
+  font-size: 28px;
+  margin: 0 0 18px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: var(--ink);
+}
+.cta-strip p {
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 2;
+  margin: 0 0 28px;
+}
+.cta-strip__actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 1024px) {
+  .svc-index__inner { grid-template-columns: repeat(3, 1fr); }
+  .svc-index a { border-bottom: 1px solid var(--line); }
+  .svc-block__inner { grid-template-columns: 1fr; gap: 32px; }
+  .svc-block__label { position: static; }
+  .svc-items ul { grid-template-columns: 1fr; }
+  .process__steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .process__steps::before { display: none; }
+}
+@media (max-width: 720px) {
+  .svc-index__inner { grid-template-columns: repeat(2, 1fr); }
+  .svc-block { padding: 70px 20px; }
+  .process { padding: 70px 20px; }
+  .process__steps { grid-template-columns: 1fr; gap: 24px; }
+  .svc-block__title { font-size: 24px; }
+}
+</style>
+</head>
+<body data-screen-label="03 Services">
+
+<div class="utility-bar">
+  <div class="utility-bar__inner">
+    <div class="utility-bar__left">
+      <span>青森県十和田市 ・ 社会保険労務士事務所</span>
+      <span class="dot"></span>
+      <span>営業時間 8:30 – 17:30（土日祝休）</span>
+      <span class="dot item-mail"></span>
+      <span class="item-mail">tani-sr-office@ab.auone-net.jp</span>
+    </div>
+    <div class="utility-bar__right">
+      <a href="contact.html">お問い合わせ</a>
+      <a href="about.html#access">アクセス</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark brand__mark--img"><img src="assets/sr-emblem.jpg" alt="谷川社会保険労務士事務所 エンブレム"></span>
+      <span class="brand__text">
+        <span class="brand__name">谷川社会保険労務士事務所</span>
+        <span class="brand__sub">TANIKAWA SHAROUSHI OFFICE</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="メインナビゲーション">
+      <a href="index.html">トップ</a>
+      <a href="about.html">事務所案内</a>
+      <a href="services.html" class="is-current">業務内容</a>
+      <a href="pricing.html">料金</a>
+      <a href="news.html">お知らせ</a>
+      <a href="faq.html">よくある質問</a>
+    </nav>
+    <div class="header-cta">
+      <div class="tel-block">
+        <span class="tel-block__label">TEL</span>
+        <span class="tel-block__num">0176-22-0725</span>
+        <span class="tel-block__hours">平日 8:30–17:30</span>
+      </div>
+      <a href="contact.html" class="btn btn--primary">ご相談はこちら<span class="arrow"></span></a>
+      <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer__panel">
+    <div class="mobile-drawer__header">
+      <span class="mobile-drawer__brand">谷川社会保険労務士事務所</span>
+      <button class="mobile-drawer__close" aria-label="閉じる">×</button>
+    </div>
+    <a href="index.html" class="m-link">トップ <span class="en">Home</span></a>
+    <a href="about.html" class="m-link">事務所案内 <span class="en">About</span></a>
+    <a href="services.html" class="m-link">業務内容 <span class="en">Services</span></a>
+    <a href="pricing.html" class="m-link">料金プラン <span class="en">Pricing</span></a>
+    <a href="news.html" class="m-link">お知らせ <span class="en">News</span></a>
+    <a href="faq.html" class="m-link">よくある質問 <span class="en">FAQ</span></a>
+    <a href="contact.html" class="m-link">お問い合わせ <span class="en">Contact</span></a>
+    <div class="mobile-drawer__cta">
+      <div class="mobile-drawer__tel">
+        <span class="l">TEL</span>
+        <span class="n">0176-22-0725</span>
+        <span class="h">平日 8:30 – 17:30</span>
+      </div>
+      <a href="contact.html" class="btn btn--primary">お問い合わせフォーム<span class="arrow"></span></a>
+    </div>
+  </div>
+</div>
+
+
+<!-- Page hero -->
+<section class="page-hero" style="--hero-photo: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80&auto=format&fit=crop');">
+  <div class="page-hero__inner">
+    <div>
+      <div class="page-hero__sub">Services</div>
+      <h1 class="page-hero__title">業務内容</h1>
+    </div>
+    <div class="breadcrumb">
+      <a href="index.html">トップ</a>
+      <span class="sep">/</span>
+      <span>業務内容</span>
+    </div>
+  </div>
+</section>
+
+<!-- Service index -->
+<nav class="svc-index">
+  <div class="svc-index__inner">
+    <a href="#proc"><span class="num">01</span><span class="name">手続き代行</span></a>
+    <a href="#payroll"><span class="num">02</span><span class="name">給与計算</span></a>
+    <a href="#rules"><span class="num">03</span><span class="name">就業規則</span></a>
+    <a href="#consult"><span class="num">04</span><span class="name">労務相談</span></a>
+    <a href="#pension"><span class="num">05</span><span class="name">年金相談</span></a>
+    <a href="#subsidy"><span class="num">06</span><span class="name">助成金・給付金</span></a>
+  </div>
+</nav>
+
+<!-- 01 -->
+<section class="svc-block" id="proc">
+  <div class="svc-block__inner">
+    <div class="svc-block__label">
+      <div class="svc-block__num">01 / 06</div>
+      <h2 class="svc-block__title">労働社会保険<br>手続き代行</h2>
+      <div class="svc-block__en">Procedural Agency</div>
+      <div class="svc-block__icon"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=700&q=80&auto=format&fit=crop" alt="労働社会保険の手続き書類" loading="lazy"></div>
+    </div>
+    <div class="svc-block__body">
+      <p class="lead">煩雑な公的手続きを、専門家がワンストップで代行。<br>本業に集中していただくための、基本の業務です。</p>
+      <p>
+        入退社の都度発生する社会保険・雇用保険の手続きから、年に一度の労働保険年度更新・算定基礎届、さらに労災事故や育児休業に関する手続きまで。提出先や様式が複雑で、法改正も多いこの分野を、専門家として正確に・期日通りに代行いたします。
+      </p>
+      <p>
+        書類作成だけでなく、その背景にある制度や、社員の方への説明までしっかりサポート。会社の労務管理の「土台」を、安心してお任せいただける体制を整えます。
+      </p>
+
+      <dl class="svc-items">
+        <dt>入退社時の手続き</dt>
+        <dd>
+          <ul>
+            <li>健康保険・厚生年金 取得／喪失</li>
+            <li>雇用保険 取得／喪失</li>
+            <li>被扶養者 異動届</li>
+            <li>第3号被保険者 関係手続き</li>
+          </ul>
+        </dd>
+        <dt>年次・定期的な手続き</dt>
+        <dd>
+          <ul>
+            <li>労働保険 年度更新</li>
+            <li>社会保険 算定基礎届</li>
+            <li>賞与支払届</li>
+            <li>月額変更届（随時改定）</li>
+          </ul>
+        </dd>
+        <dt>労災・育休等</dt>
+        <dd>
+          <ul>
+            <li>労働者災害補償保険 給付請求</li>
+            <li>育児休業給付金 申請</li>
+            <li>介護休業給付金 申請</li>
+            <li>傷病手当金 申請</li>
+          </ul>
+        </dd>
+      </dl>
+
+      <div class="svc-block__quote">
+        「入退社が多くて、毎月の手続きが追いつかない」「労災が発生したが、どう動けばいいか分からない」——そんなときこそ、専門家にお任せください。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="svc-block" id="payroll">
+  <div class="svc-block__inner">
+    <div class="svc-block__label">
+      <div class="svc-block__num">02 / 06</div>
+      <h2 class="svc-block__title">給与計算</h2>
+      <div class="svc-block__en">Payroll Calculation</div>
+      <div class="svc-block__icon"><img src="https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=700&q=80&auto=format&fit=crop" alt="電卓と給与計算" loading="lazy"></div>
+    </div>
+    <div class="svc-block__body">
+      <p class="lead">毎月の給与計算を、正確に・スピーディに。<br>社会保険・税金の改定にも自動で対応します。</p>
+      <p>
+        勤怠の集計から、各種手当・控除の計算、社会保険料・所得税・住民税の計算まで。社員ごとの明細書発行、銀行振込データの作成、源泉徴収簿の管理まで一貫してお引き受けします。
+      </p>
+      <p>
+        年に一度の年末調整、住民税の更新、賞与計算も追加料金なしで対応するプランをご用意。給与担当者の負担を大きく軽減し、ミスや遅延のリスクから会社を守ります。
+      </p>
+
+      <dl class="svc-items">
+        <dt>月次給与計算</dt>
+        <dd>
+          <ul>
+            <li>勤怠データの集計</li>
+            <li>各種手当・控除の計算</li>
+            <li>社会保険料・所得税・住民税</li>
+            <li>給与明細書の作成</li>
+            <li>振込データの作成</li>
+            <li>賃金台帳の作成・保管</li>
+          </ul>
+        </dd>
+        <dt>年次・スポット業務</dt>
+        <dd>
+          <ul>
+            <li>賞与計算</li>
+            <li>年末調整</li>
+            <li>源泉徴収票の作成</li>
+            <li>住民税の更新対応</li>
+            <li>給与改定への対応</li>
+            <li>マイナンバー管理</li>
+          </ul>
+        </dd>
+      </dl>
+
+      <div class="svc-block__quote">
+        時間外・深夜・休日労働、月60時間超の割増賃金など、複雑になりがちな計算こそ専門家の出番です。労働時間の集計から割増率の適用まで正確に行い、未払い賃金リスクから会社を守ります。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="svc-block" id="rules">
+  <div class="svc-block__inner">
+    <div class="svc-block__label">
+      <div class="svc-block__num">03 / 06</div>
+      <h2 class="svc-block__title">就業規則の<br>作成・変更</h2>
+      <div class="svc-block__en">Work Regulations</div>
+      <div class="svc-block__icon"><img src="assets/img/work-rules.png" alt="就業規則の書類" loading="lazy"></div>
+    </div>
+    <div class="svc-block__body">
+      <p class="lead">"会社のルール"を、会社らしく整える。<br>守りと攻めの両面から、就業規則を設計します。</p>
+      <p>
+        社員が常時10人以上になる会社は、就業規則を作成し、労働基準監督署へ届け出ることが法律で義務づけられています。作成を怠ると罰則の対象となるほか、いざというときに会社を守る根拠を欠くことにもなりかねません。
+      </p>
+      <p>
+        さらに、働き方改革やハラスメント防止、育児・介護休業など、労働関係法令は毎年のように改正されます。古いままの規則を放置すると、気づかぬうちに法令違反状態に陥るリスクがあります。
+      </p>
+      <p>
+        ひな形をそのまま使うのではなく、その会社の業種・規模・文化・将来像を伺ったうえで、最新の法改正に対応した規程を設計。労使トラブルを未然に防ぎ、いざというときには会社を守れる就業規則をお作りします。
+      </p>
+
+      <dl class="svc-items">
+        <dt>本則・諸規程</dt>
+        <dd>
+          <ul>
+            <li>就業規則（本則）作成・改定</li>
+            <li>賃金規程</li>
+            <li>退職金規程</li>
+            <li>育児・介護休業規程</li>
+            <li>ハラスメント防止規程</li>
+            <li>テレワーク／副業規程</li>
+          </ul>
+        </dd>
+        <dt>運用サポート</dt>
+        <dd>
+          <ul>
+            <li>労働基準監督署への届出代行</li>
+            <li>法改正に伴う変更のご提案</li>
+            <li>法改正に伴う改定</li>
+            <li>運用上のご相談</li>
+          </ul>
+        </dd>
+      </dl>
+
+      <div class="svc-block__quote">
+        既存の就業規則が10年以上前のもの、ひな形のまま、という会社様も多くいらっしゃいます。最新の法改正に沿って一度見直しをすることで、思わぬリスクを未然に防げます。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="svc-block" id="consult">
+  <div class="svc-block__inner">
+    <div class="svc-block__label">
+      <div class="svc-block__num">04 / 06</div>
+      <h2 class="svc-block__title">労務相談・<br>コンサルティング</h2>
+      <div class="svc-block__en">Labor Consulting</div>
+      <div class="svc-block__icon"><img src="assets/img/consult-meeting.png" alt="労務相談の打ち合わせ" loading="lazy"></div>
+    </div>
+    <div class="svc-block__body">
+      <p class="lead">経営者の隣で、一緒に悩み、一緒に動く。<br>会社の「人」にまつわる課題を、まるごとサポート。</p>
+      <p>
+        「問題のある社員にどう対応すべきか」「うちの会社にも評価制度は必要か」「ハラスメントの相談を受けてしまった」——日々の経営の中で次々と発生する人事労務の問題に、顧問契約という形で継続的に伴走します。
+      </p>
+      <p>
+        電話・メール・オンライン会議でいつでもご相談いただける体制を整え、必要に応じて事務所訪問もいたします。問題発生時の対応はもちろん、未然防止のための仕組みづくりまで、経営者の参謀としてお支えします。
+      </p>
+
+      <dl class="svc-items">
+        <dt>個別労務相談</dt>
+        <dd>
+          <ul>
+            <li>問題社員への対応</li>
+            <li>ハラスメント対応</li>
+            <li>退職・解雇に関するご相談</li>
+            <li>労使トラブルの予防</li>
+            <li>労働基準監督署 調査対応</li>
+            <li>休職・復職に関するご相談</li>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="svc-block" id="pension">
+  <div class="svc-block__inner">
+    <div class="svc-block__label">
+      <div class="svc-block__num">05 / 06</div>
+      <h2 class="svc-block__title">年金相談</h2>
+      <div class="svc-block__en">Pension Consultation</div>
+      <div class="svc-block__icon"><img src="assets/img/pension.png" alt="年金相談" loading="lazy"></div>
+    </div>
+    <div class="svc-block__body">
+      <p class="lead">複雑な年金制度を、わかりやすく整理。<br>"自分の年金"を正しく知るためのお手伝いを。</p>
+      <p>
+        老齢年金・遺族年金・障害年金。年金制度は度重なる改正により、専門家でも追いきれないほど複雑になっています。「いつから、いくらもらえるのか」「働きながら受け取るとどうなるのか」——個人の方からのご相談も、丁寧にお受けします。
+      </p>
+      <p>
+        年金記録の確認、見込額の試算、請求手続き、不支給決定への不服申立てなど、年金事務所での相談で物足りない部分まで、しっかりサポートいたします。
+      </p>
+
+      <dl class="svc-items">
+        <dt>老齢年金</dt>
+        <dd>
+          <ul>
+            <li>受給見込額の試算</li>
+            <li>請求手続きサポート</li>
+            <li>在職老齢年金の試算</li>
+            <li>繰上げ・繰下げのご相談</li>
+          </ul>
+        </dd>
+        <dt>障害年金・遺族年金</dt>
+        <dd>
+          <ul>
+            <li>障害年金 請求サポート</li>
+            <li>遺族年金 請求サポート</li>
+            <li>不支給決定への対応</li>
+            <li>傷病経過の整理</li>
+          </ul>
+        </dd>
+      </dl>
+
+      <div class="svc-block__quote">
+        ご自宅・事務所どちらでもご相談を承ります。「ねんきん定期便」をお手元にご準備のうえ、お気軽にお問い合わせください。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="svc-block" id="subsidy">
+  <div class="svc-block__inner">
+    <div class="svc-block__label">
+      <div class="svc-block__num">06 / 06</div>
+      <h2 class="svc-block__title">助成金・<br>給付金サポート</h2>
+      <div class="svc-block__en">Subsidy &amp; Benefits</div>
+      <div class="svc-block__icon"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=80&auto=format&fit=crop" alt="助成金の申請サポート" loading="lazy"></div>
+    </div>
+    <div class="svc-block__body">
+      <p class="lead">"使える助成金"を、制度づくりと一緒に。<br>給付金の手続きも、あわせてサポート。</p>
+      <p>
+        雇用や育成、職場環境改善に取り組む会社には、国の助成金制度が数多く用意されています。当事務所では、会社の状況に合わせて活用できる制度を選定し、制度設計から申請・受給までを一気通貫でサポートします。
+      </p>
+      <p>
+        あわせて、従業員の育児休業・介護休業・傷病による休業などの際に受けられる雇用保険の各種給付金についても、申請手続きを代行いたします。「制度を整える」ことと「働く人を支える」ことの両面から、会社と従業員をお支えします。
+      </p>
+
+      <dl class="svc-items">
+        <dt>各種助成金（一例）</dt>
+        <dd>
+          <ul>
+            <li>雇用の安定に関する助成金</li>
+            <li>人材育成に関する助成金</li>
+            <li>仕事と家庭の両立支援の助成金</li>
+            <li>職場環境・処遇改善の助成金</li>
+            <li>働き方改革に関する助成金</li>
+            <li>高年齢者雇用に関する助成金 ほか</li>
+          </ul>
+        </dd>
+        <dt>雇用保険の給付金</dt>
+        <dd>
+          <ul>
+            <li>育児休業給付金</li>
+            <li>出生時育児休業給付金（産後パパ育休）</li>
+            <li>介護休業給付金</li>
+            <li>高年齢雇用継続給付</li>
+            <li>教育訓練給付金</li>
+            <li>傷病手当金（健康保険）の手続き</li>
+          </ul>
+        </dd>
+        <dt>サポート内容</dt>
+        <dd>
+          <ul>
+            <li>会社状況のヒアリング</li>
+            <li>活用可能な制度の選定</li>
+            <li>計画書の作成・届出</li>
+            <li>就業規則等の整備</li>
+            <li>支給申請書の作成・申請</li>
+            <li>受給後の運用フォロー</li>
+          </ul>
+        </dd>
+      </dl>
+
+      <div class="svc-block__quote">
+        ※ 助成金・給付金は支給額と要件が頻繁に変わります。具体的に活用できる制度は、会社の状況を伺ったうえで無料相談時にご案内いたします。受給を保証するものではありませんが、最大限のサポートをお約束します。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="process">
+  <div class="process__inner">
+    <div class="section-head">
+      <div class="eyebrow">Consultation Flow</div>
+      <h2 class="section-title">ご相談から契約までの流れ</h2>
+    </div>
+
+    <div class="process__steps">
+      <div class="proc-step">
+        <div class="proc-step__circle">01</div>
+        <h3 class="proc-step__title">お問い合わせ</h3>
+        <p class="proc-step__body">電話・メール・フォームのいずれかでご連絡ください。</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step__circle">02</div>
+        <h3 class="proc-step__title">無料相談</h3>
+        <p class="proc-step__body">ご訪問またはオンラインで、現状を伺います（初回無料）。</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step__circle">03</div>
+        <h3 class="proc-step__title">お見積り</h3>
+        <p class="proc-step__body">ご要望に応じた業務範囲と料金をご提示いたします。</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step__circle">04</div>
+        <h3 class="proc-step__title">ご契約</h3>
+        <p class="proc-step__body">内容にご納得いただけましたら、契約書を取り交わします。</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-step__circle">05</div>
+        <h3 class="proc-step__title">業務開始</h3>
+        <p class="proc-step__body">必要書類をお預かりし、業務を開始いたします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA strip -->
+<section class="cta-strip">
+  <h2>料金の目安・お見積りについて</h2>
+  <p>顧問契約・スポット業務それぞれの料金プランをご用意しております。<br>会社の規模・業務量にあわせた最適なプランをご提案いたします。</p>
+  <div class="cta-strip__actions">
+    <a href="pricing.html" class="btn btn--primary">料金プランを見る<span class="arrow"></span></a>
+    <a href="contact.html" class="btn btn--ghost">お見積り依頼<span class="arrow"></span></a>
+  </div>
+</section>
+
+
+<!-- Mobile sticky CTA -->
+<div class="mobile-cta">
+  <a href="tel:0176-22-0725" class="tel-cta">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+    お電話
+  </a>
+  <a href="contact.html" class="form-cta">フォームでご相談 <span class="arrow"></span></a>
+</div>
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">
+        <span class="brand__mark brand__mark--img"><img src="assets/sr-emblem.jpg" alt="谷川社会保険労務士事務所 エンブレム"></span>
+        <span class="brand__text">
+          <span class="brand__name">谷川社会保険労務士事務所</span>
+          <span class="brand__sub">TANIKAWA SHAROUSHI OFFICE</span>
+        </span>
+      </a>
+      <p>
+        〒034-0041<br>
+        青森県十和田市大字相坂字白上280-20<br>
+        TEL 0176-22-0725 / FAX 050-3045-3453
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Service</h4>
+      <ul>
+        <li><a href="services.html#proc">手続き代行</a></li>
+        <li><a href="services.html#payroll">給与計算</a></li>
+        <li><a href="services.html#rules">就業規則</a></li>
+        <li><a href="services.html#consult">労務相談</a></li>
+        <li><a href="services.html#pension">年金相談</a></li>
+        <li><a href="services.html#subsidy">助成金</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Office</h4>
+      <ul>
+        <li><a href="about.html">事務所案内</a></li>
+        <li><a href="about.html#access">アクセス</a></li>
+        <li><a href="pricing.html">料金プラン</a></li>
+        <li><a href="news.html">お知らせ</a></li>
+        <li><a href="faq.html">よくある質問</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>
+        平日 8:30 – 17:30<br>
+        土日祝休<br><br>
+        tani-sr-office@<br>ab.auone-net.jp
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 TANIKAWA SHAROUSHI OFFICE. All Rights Reserved.</span>
+    <span><a href="privacy.html" style="color:rgba(255,255,255,0.6);">プライバシーポリシー</a> ・ Aomori / Towada</span>
+  </div>
+</footer>
+
+
+<script>
+(function() {
+  const toggle = document.querySelector('.nav-toggle');
+  const drawer = document.getElementById('mobileDrawer');
+  if (!toggle || !drawer) return;
+  const closeBtn = drawer.querySelector('.mobile-drawer__close');
+  function open() {
+    drawer.classList.add('is-open');
+    toggle.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    drawer.classList.remove('is-open');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  toggle.addEventListener('click', () => drawer.classList.contains('is-open') ? close() : open());
+  closeBtn.addEventListener('click', close);
+  drawer.addEventListener('click', (e) => { if (e.target === drawer) close(); });
+  drawer.querySelectorAll('a.m-link').forEach(a => a.addEventListener('click', close));
+})();
+</script>
+</body>
+</html>

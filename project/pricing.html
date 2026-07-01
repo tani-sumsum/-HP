@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>料金プラン | 谷川社会保険労務士事務所</title>
+<meta name="description" content="谷川社会保険労務士事務所の料金プラン。顧問契約・スポット業務それぞれの目安料金を掲載。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+.pricing-intro {
+  background: var(--paper);
+  padding: 100px 32px 60px;
+  text-align: center;
+}
+.pricing-intro__text {
+  font-family: var(--serif-jp);
+  font-size: 19px;
+  color: var(--ink);
+  line-height: 2;
+  letter-spacing: 0.08em;
+  max-width: 720px;
+  margin: 0 auto;
+  font-weight: 500;
+}
+.pricing-intro__note {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--text-soft);
+  letter-spacing: 0.04em;
+}
+
+.plans {
+  background: var(--paper);
+  padding: 40px 32px 130px;
+}
+.plans__inner { max-width: var(--max); margin: 0 auto; }
+
+.plans__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 60px 0 32px;
+}
+.plans__head .num {
+  font-family: var(--serif-en);
+  font-style: italic;
+  color: var(--gold-deep);
+  font-size: 28px;
+  letter-spacing: 0.1em;
+}
+.plans__head h2 {
+  font-family: var(--serif-jp);
+  font-size: 28px;
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+.plans__head::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* Service legend cards */
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.legend-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--r-md);
+  padding: 26px 24px;
+}
+.legend-card__no {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--accent-deep);
+  margin-bottom: 10px;
+}
+.legend-card__name {
+  font-family: var(--serif-jp);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+.legend-card__desc {
+  font-size: 12.5px;
+  line-height: 1.9;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+/* Rate table (顧問料) */
+.rate-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.rate-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border: 1px solid var(--line);
+  min-width: 640px;
+}
+.rate-table thead th {
+  background: var(--navy-deep);
+  color: var(--white);
+  font-family: var(--serif-jp);
+  font-weight: 500;
+  font-size: 13.5px;
+  letter-spacing: 0.06em;
+  padding: 18px 16px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.12);
+  line-height: 1.5;
+}
+.rate-table thead th:first-child {
+  background: var(--accent-deep);
+  width: 140px;
+}
+.rate-table thead th .en {
+  display: block;
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--accent-soft);
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+.rate-table tbody th {
+  background: var(--paper-warm);
+  font-family: var(--serif-jp);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--ink);
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+.rate-table tbody td {
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--line);
+  font-family: "DM Sans", "Noto Sans JP", sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+  background: var(--white);
+}
+.rate-table tbody td .yen { font-size: 12px; color: var(--text-soft); margin-right: 1px; }
+.rate-table tbody tr:nth-child(even) td { background: var(--paper); }
+.rate-table tbody tr:hover td { background: var(--accent-soft); }
+.rate-table tbody td.askrow {
+  font-family: var(--serif-jp);
+  font-size: 14px;
+  color: var(--accent-deep);
+  letter-spacing: 0.08em;
+}
+.rate-unit {
+  font-size: 12px;
+  color: var(--text-soft);
+  text-align: right;
+  margin: 12px 0 0;
+  letter-spacing: 0.04em;
+}
+
+/* Spot table */
+.spot-table {
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+.spot-row {
+  display: grid;
+  grid-template-columns: 1.4fr 2fr 200px;
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+  gap: 24px;
+}
+.spot-row:last-child { border-bottom: 0; }
+.spot-row--head {
+  background: var(--paper);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--text-soft);
+}
+.spot-row__name {
+  font-family: var(--serif-jp);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  font-weight: 500;
+}
+.spot-row__desc {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.9;
+}
+.spot-row__price {
+  font-family: var(--serif-en);
+  font-size: 18px;
+  color: var(--navy);
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+.spot-row__price .small {
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-left: 4px;
+  font-family: var(--sans-jp);
+}
+
+/* Notes */
+.spot-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.spot-tags span {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--r-sm);
+  padding: 12px 18px;
+  font-family: var(--serif-jp);
+  font-size: 14px;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+.price-notes {
+  background: var(--paper-warm);
+  padding: 32px 36px;
+  margin-top: 60px;
+  border-left: 3px solid var(--gold);
+}
+.price-notes h4 {
+  margin: 0 0 16px;
+  font-family: var(--serif-jp);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  color: var(--navy);
+}
+.price-notes ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 2;
+  color: var(--text);
+}
+
+/* CTA strip */
+.cta-strip {
+  background: var(--navy-deep);
+  color: var(--white);
+  padding: 80px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-strip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 600px 300px at 80% 50%, rgba(176, 137, 71, 0.18), transparent 70%);
+}
+.cta-strip > * { position: relative; z-index: 1; }
+.cta-strip h2 {
+  font-family: var(--serif-jp);
+  font-size: 28px;
+  margin: 0 0 18px;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  color: var(--white);
+}
+.cta-strip p {
+  color: rgba(255,255,255,0.78);
+  font-size: 14.5px;
+  line-height: 2;
+  margin: 0 0 28px;
+}
+.cta-strip__actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.cta-strip .btn--gold {
+  background: var(--accent);
+  color: var(--white);
+}
+.cta-strip .btn--gold:hover { background: var(--accent-deep); color: var(--white); }
+.cta-strip .btn--ghost { color: var(--white); border-color: rgba(255,255,255,0.5); background: transparent; }
+.cta-strip .btn--ghost:hover { background: var(--white); color: var(--primary-deep); border-color: var(--white); }
+
+@media (max-width: 1024px) {
+  .legend-grid { grid-template-columns: 1fr 1fr; }
+  .spot-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 20px; }
+  .spot-row--head { display: none; }
+  .spot-row__price { text-align: left; }
+}
+@media (max-width: 720px) {
+  .legend-grid { grid-template-columns: 1fr; gap: 12px; }
+  .plans__head h2 { font-size: 22px; }
+  .plans__head .num { font-size: 22px; }
+  .rate-unit { text-align: left; }
+}
+</style>
+</head>
+<body data-screen-label="04 Pricing">
+
+<div class="utility-bar">
+  <div class="utility-bar__inner">
+    <div class="utility-bar__left">
+      <span>青森県十和田市 ・ 社会保険労務士事務所</span>
+      <span class="dot"></span>
+      <span>営業時間 8:30 – 17:30（土日祝休）</span>
+      <span class="dot item-mail"></span>
+      <span class="item-mail">tani-sr-office@ab.auone-net.jp</span>
+    </div>
+    <div class="utility-bar__right">
+      <a href="contact.html">お問い合わせ</a>
+      <a href="about.html#access">アクセス</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark brand__mark--img"><img src="assets/sr-emblem.jpg" alt="谷川社会保険労務士事務所 エンブレム"></span>
+      <span class="brand__text">
+        <span class="brand__name">谷川社会保険労務士事務所</span>
+        <span class="brand__sub">TANIKAWA SHAROUSHI OFFICE</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="メインナビゲーション">
+      <a href="index.html">トップ</a>
+      <a href="about.html">事務所案内</a>
+      <a href="services.html">業務内容</a>
+      <a href="pricing.html" class="is-current">料金</a>
+      <a href="news.html">お知らせ</a>
+      <a href="faq.html">よくある質問</a>
+    </nav>
+    <div class="header-cta">
+      <div class="tel-block">
+        <span class="tel-block__label">TEL</span>
+        <span class="tel-block__num">0176-22-0725</span>
+        <span class="tel-block__hours">平日 8:30–17:30</span>
+      </div>
+      <a href="contact.html" class="btn btn--primary">ご相談はこちら<span class="arrow"></span></a>
+      <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer__panel">
+    <div class="mobile-drawer__header">
+      <span class="mobile-drawer__brand">谷川社会保険労務士事務所</span>
+      <button class="mobile-drawer__close" aria-label="閉じる">×</button>
+    </div>
+    <a href="index.html" class="m-link">トップ <span class="en">Home</span></a>
+    <a href="about.html" class="m-link">事務所案内 <span class="en">About</span></a>
+    <a href="services.html" class="m-link">業務内容 <span class="en">Services</span></a>
+    <a href="pricing.html" class="m-link">料金プラン <span class="en">Pricing</span></a>
+    <a href="news.html" class="m-link">お知らせ <span class="en">News</span></a>
+    <a href="faq.html" class="m-link">よくある質問 <span class="en">FAQ</span></a>
+    <a href="contact.html" class="m-link">お問い合わせ <span class="en">Contact</span></a>
+    <div class="mobile-drawer__cta">
+      <div class="mobile-drawer__tel">
+        <span class="l">TEL</span>
+        <span class="n">0176-22-0725</span>
+        <span class="h">平日 8:30 – 17:30</span>
+      </div>
+      <a href="contact.html" class="btn btn--primary">お問い合わせフォーム<span class="arrow"></span></a>
+    </div>
+  </div>
+</div>
+
+
+<section class="page-hero" style="--hero-photo: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80&auto=format&fit=crop');">
+  <div class="page-hero__inner">
+    <div>
+      <div class="page-hero__sub">Pricing Plan</div>
+      <h1 class="page-hero__title">料金プラン</h1>
+    </div>
+    <div class="breadcrumb">
+      <a href="index.html">トップ</a>
+      <span class="sep">/</span>
+      <span>料金プラン</span>
+    </div>
+  </div>
+</section>
+
+<!-- Intro -->
+<section class="pricing-intro">
+  <p class="pricing-intro__text">
+    従業員数と業務内容にあわせた、わかりやすい月額顧問料。<br>
+    必要な業務だけを選んでご契約いただけます。
+  </p>
+  <p class="pricing-intro__note">※ 下記は月額顧問料（税込）の目安です。実際の料金は業務範囲・状況に応じてお見積りいたします。</p>
+</section>
+
+<!-- Plans -->
+<section class="plans">
+  <div class="plans__inner">
+
+    <!-- 顧問契約 -->
+    <div class="plans__head">
+      <span class="num">01</span>
+      <h2>顧問料（月額）</h2>
+    </div>
+    <p style="color:var(--text-soft); font-size:14px; line-height:2; margin:0 0 32px; max-width:720px;">
+      ご契約は、以下の4つの業務から必要なものをお選びいただけます。従業員数に応じて、月額顧問料が決まります。
+    </p>
+
+    <!-- Legend -->
+    <div class="legend-grid">
+      <div class="legend-card">
+        <div class="legend-card__no">Plan A</div>
+        <h3 class="legend-card__name">相談</h3>
+        <p class="legend-card__desc">日常の労務相談・法改正情報のご案内を中心とした、もっともシンプルなプラン。</p>
+      </div>
+      <div class="legend-card">
+        <div class="legend-card__no">Plan B</div>
+        <h3 class="legend-card__name">相談・手続き業務</h3>
+        <p class="legend-card__desc">労務相談に加え、入退社・算定基礎・労保更新などの手続き代行を含むプラン。</p>
+      </div>
+      <div class="legend-card">
+        <div class="legend-card__no">Plan C</div>
+        <h3 class="legend-card__name">給与計算</h3>
+        <p class="legend-card__desc">毎月の給与計算・明細作成・振込データ作成などをお引き受けするプラン。</p>
+      </div>
+      <div class="legend-card">
+        <div class="legend-card__no">Plan D</div>
+        <h3 class="legend-card__name">給与・勤怠計算</h3>
+        <p class="legend-card__desc">給与計算に加え、勤怠データの集計・管理までを一括でお任せいただけるプラン。</p>
+      </div>
+    </div>
+
+    <!-- Rate table -->
+    <div class="rate-table-wrap">
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>従業員数</th>
+            <th>相談<span class="en">Plan A</span></th>
+            <th>相談・手続き業務<span class="en">Plan B</span></th>
+            <th>給与計算<span class="en">Plan C</span></th>
+            <th>給与・勤怠計算<span class="en">Plan D</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1〜4名</th>
+            <td><span class="yen">¥</span>11,000</td>
+            <td><span class="yen">¥</span>15,000</td>
+            <td><span class="yen">¥</span>10,000</td>
+            <td><span class="yen">¥</span>15,000</td>
+          </tr>
+          <tr>
+            <th>5〜9名</th>
+            <td><span class="yen">¥</span>11,000</td>
+            <td><span class="yen">¥</span>18,000</td>
+            <td><span class="yen">¥</span>13,000</td>
+            <td><span class="yen">¥</span>18,000</td>
+          </tr>
+          <tr>
+            <th>10〜14名</th>
+            <td><span class="yen">¥</span>16,500</td>
+            <td><span class="yen">¥</span>23,000</td>
+            <td><span class="yen">¥</span>18,000</td>
+            <td><span class="yen">¥</span>23,000</td>
+          </tr>
+          <tr>
+            <th>15〜19名</th>
+            <td><span class="yen">¥</span>16,500</td>
+            <td><span class="yen">¥</span>28,000</td>
+            <td><span class="yen">¥</span>23,000</td>
+            <td><span class="yen">¥</span>28,000</td>
+          </tr>
+          <tr>
+            <th>20〜24名</th>
+            <td><span class="yen">¥</span>22,000</td>
+            <td><span class="yen">¥</span>33,000</td>
+            <td><span class="yen">¥</span>28,000</td>
+            <td><span class="yen">¥</span>33,000</td>
+          </tr>
+          <tr>
+            <th>25〜29名</th>
+            <td><span class="yen">¥</span>22,000</td>
+            <td><span class="yen">¥</span>38,000</td>
+            <td><span class="yen">¥</span>33,000</td>
+            <td><span class="yen">¥</span>38,000</td>
+          </tr>
+          <tr>
+            <th>30〜34名</th>
+            <td><span class="yen">¥</span>22,000</td>
+            <td><span class="yen">¥</span>43,000</td>
+            <td><span class="yen">¥</span>38,000</td>
+            <td><span class="yen">¥</span>43,000</td>
+          </tr>
+          <tr>
+            <th>35〜39名</th>
+            <td><span class="yen">¥</span>22,000</td>
+            <td><span class="yen">¥</span>48,000</td>
+            <td><span class="yen">¥</span>43,000</td>
+            <td><span class="yen">¥</span>48,000</td>
+          </tr>
+          <tr>
+            <th>40〜44名</th>
+            <td><span class="yen">¥</span>27,500</td>
+            <td><span class="yen">¥</span>53,000</td>
+            <td><span class="yen">¥</span>48,000</td>
+            <td><span class="yen">¥</span>53,000</td>
+          </tr>
+          <tr>
+            <th>45〜49名</th>
+            <td><span class="yen">¥</span>27,500</td>
+            <td><span class="yen">¥</span>58,000</td>
+            <td><span class="yen">¥</span>53,000</td>
+            <td><span class="yen">¥</span>58,000</td>
+          </tr>
+          <tr>
+            <th>50名〜</th>
+            <td class="askrow" colspan="4">要相談（個別にお見積りいたします）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="rate-unit">※ 金額はすべて月額・税込の目安です。</p>
+
+    <!-- スポット業務のご案内 -->
+    <div class="plans__head">
+      <span class="num">02</span>
+      <h2>スポット業務</h2>
+    </div>
+    <p style="color:var(--text-soft); font-size:14px; line-height:2; margin:0 0 28px; max-width:720px;">
+      顧問契約をされていないお客様も、単発（スポット）でのご依頼を承っております。以下は一例です。料金は業務量や内容により異なりますので、個別にお見積りいたします。
+    </p>
+
+    <div class="spot-tags">
+      <span>就業規則の新規作成・改定</span>
+      <span>算定基礎届・労保年度更新</span>
+      <span>入退社手続き</span>
+      <span>労災手続き</span>
+      <span>傷病手当金・育児介護休業給付手続き</span>
+      <span>助成金の申請サポート</span>
+      <span>各種労務相談（単発）</span>
+      <span>問題社員・退職・ハラスメント対応</span>
+      <span>労働基準監督署の調査対応</span>
+    </div>
+
+    <!-- Notes -->
+    <div class="price-notes">
+      <h4>料金についての注意事項</h4>
+      <ul>
+        <li>表示価格はすべて消費税込みの目安料金です。</li>
+        <li>顧問料は、従業員数・業務範囲・業種の複雑度により変動する場合がございます。詳しくはお見積りをご依頼ください。</li>
+        <li>手続き業務・給与計算に伴う実費（電子申請・郵送費等）は別途となる場合があります。</li>
+        <li>スポット業務（単発のご依頼）の料金は、内容を伺ったうえで個別にお見積りいたします。</li>
+        <li>助成金の成果報酬部分は、受給確定後の後払いとなります。</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <h2>料金のお見積り、お気軽にご相談ください。</h2>
+  <p>お客様の状況を伺ったうえで、最適なプランをご提案いたします。<br>「相談だけ」「見積りだけ」も大歓迎です。</p>
+  <div class="cta-strip__actions">
+    <a href="contact.html" class="btn btn--gold">お見積りフォーム<span class="arrow"></span></a>
+    <a href="tel:0176-22-0725" class="btn btn--ghost">0176-22-0725<span class="arrow"></span></a>
+  </div>
+</section>
+
+<!-- Mobile sticky CTA -->
+<div class="mobile-cta">
+  <a href="tel:0176-22-0725" class="tel-cta">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+    お電話
+  </a>
+  <a href="contact.html" class="form-cta">フォームでご相談 <span class="arrow"></span></a>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">
+        <span class="brand__mark brand__mark--img"><img src="assets/sr-emblem.jpg" alt="谷川社会保険労務士事務所 エンブレム"></span>
+        <span class="brand__text">
+          <span class="brand__name">谷川社会保険労務士事務所</span>
+          <span class="brand__sub">TANIKAWA SHAROUSHI OFFICE</span>
+        </span>
+      </a>
+      <p>
+        〒034-0041<br>
+        青森県十和田市大字相坂字白上280-20<br>
+        TEL 0176-22-0725 / FAX 050-3045-3453
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Service</h4>
+      <ul>
+        <li><a href="services.html#proc">手続き代行</a></li>
+        <li><a href="services.html#payroll">給与計算</a></li>
+        <li><a href="services.html#rules">就業規則</a></li>
+        <li><a href="services.html#consult">労務相談</a></li>
+        <li><a href="services.html#pension">年金相談</a></li>
+        <li><a href="services.html#subsidy">助成金</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Office</h4>
+      <ul>
+        <li><a href="about.html">事務所案内</a></li>
+        <li><a href="about.html#access">アクセス</a></li>
+        <li><a href="pricing.html">料金プラン</a></li>
+        <li><a href="news.html">お知らせ</a></li>
+        <li><a href="faq.html">よくある質問</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>
+        平日 8:30 – 17:30<br>
+        土日祝休<br><br>
+        tani-sr-office@<br>ab.auone-net.jp
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 TANIKAWA SHAROUSHI OFFICE. All Rights Reserved.</span>
+    <span><a href="privacy.html" style="color:rgba(255,255,255,0.6);">プライバシーポリシー</a> ・ Aomori / Towada</span>
+  </div>
+</footer>
+
+
+<script>
+(function() {
+  const toggle = document.querySelector('.nav-toggle');
+  const drawer = document.getElementById('mobileDrawer');
+  if (!toggle || !drawer) return;
+  const closeBtn = drawer.querySelector('.mobile-drawer__close');
+  function open() {
+    drawer.classList.add('is-open');
+    toggle.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    drawer.classList.remove('is-open');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  toggle.addEventListener('click', () => drawer.classList.contains('is-open') ? close() : open());
+  closeBtn.addEventListener('click', close);
+  drawer.addEventListener('click', (e) => { if (e.target === drawer) close(); });
+  drawer.querySelectorAll('a.m-link').forEach(a => a.addEventListener('click', close));
+})();
+</script>
+</body>
+</html>
