@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>よくある質問 | 谷川社会保険労務士事務所</title>
+<meta name="description" content="谷川社会保険労務士事務所へのよくあるご質問と回答。料金、契約、ご相談の流れなどについて。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+.faq-page { background: var(--paper-light); padding: 100px 32px 130px; }
+.faq-page__inner { max-width: 900px; margin: 0 auto; }
+
+.faq-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.faq-nav button {
+  background: none;
+  border: 0;
+  padding: 14px 20px;
+  font-family: var(--sans-jp);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--text-soft);
+  cursor: pointer;
+  position: relative;
+}
+.faq-nav button.is-active { color: var(--navy); }
+.faq-nav button.is-active::after {
+  content: "";
+  position: absolute;
+  left: 16px; right: 16px;
+  bottom: -1px;
+  height: 2px;
+  background: var(--gold);
+}
+
+.faq-category { margin-bottom: 56px; }
+.faq-category__head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.faq-category__num {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--gold-deep);
+  letter-spacing: 0.15em;
+}
+.faq-category__name {
+  font-family: var(--serif-jp);
+  font-size: 22px;
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 24px 60px 24px 56px;
+  position: relative;
+  font-family: var(--serif-jp);
+  font-size: 16px;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  transition: color 0.2s;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--gold-deep); }
+.faq-item summary::before {
+  content: "Q";
+  position: absolute;
+  left: 8px;
+  top: 22px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  background: var(--white);
+  font-family: var(--serif-en);
+  font-style: italic;
+  color: var(--gold-deep);
+  font-size: 15px;
+  letter-spacing: 0;
+}
+.faq-item summary::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-right: 1px solid var(--text-soft);
+  border-bottom: 1px solid var(--text-soft);
+  transform: translateY(-75%) rotate(45deg);
+  transition: transform 0.25s;
+}
+.faq-item[open] summary::after { transform: translateY(-25%) rotate(-135deg); }
+
+.faq-item__body {
+  padding: 0 60px 28px 56px;
+  position: relative;
+}
+.faq-item__body::before {
+  content: "A";
+  position: absolute;
+  left: 8px;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 15px;
+}
+.faq-item__body p {
+  font-size: 14px;
+  line-height: 2.1;
+  color: var(--text);
+  margin: 0 0 12px;
+  letter-spacing: 0.04em;
+}
+.faq-item__body p:last-child { margin-bottom: 0; }
+.faq-item__body p a { color: var(--gold-deep); text-decoration: underline; text-underline-offset: 4px; }
+
+.faq-help {
+  background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary) 60%, var(--primary-vivid) 130%);
+  color: var(--white);
+  margin-top: 80px;
+  padding: 60px 56px;
+  border-radius: var(--r-lg);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(125, 70, 40, 0.22);
+}
+.faq-help::before {
+  content: "";
+  position: absolute;
+  top: -100px; right: -50px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(214, 178, 119, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.faq-help::after {
+  content: "";
+  position: absolute;
+  bottom: -120px; left: -80px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(168, 100, 58, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.faq-help h3 { color: var(--white) !important; }
+.faq-help .btn--gold { background: var(--white); color: var(--accent-deep); }
+.faq-help .btn--gold:hover { background: var(--ink); color: var(--white); }
+.faq-help > * { position: relative; }
+.faq-help__head .eyebrow { color: var(--gold-soft); }
+.faq-help__head h3 {
+  font-family: var(--serif-jp);
+  font-size: 24px;
+  margin: 14px 0 12px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+.faq-help__head p { color: rgba(255,255,255,0.7); font-size: 13.5px; line-height: 2; margin: 0; }
+.faq-help__actions { display: flex; flex-direction: column; gap: 12px; }
+
+@media (max-width: 720px) {
+  .faq-item summary { padding: 18px 50px 18px 50px; font-size: 14.5px; }
+  .faq-item__body { padding: 0 20px 24px 50px; }
+  .faq-help { grid-template-columns: 1fr; padding: 40px 28px; }
+}
+</style>
+</head>
+<body data-screen-label="06 FAQ">
+
+<div class="utility-bar">
+  <div class="utility-bar__inner">
+    <div class="utility-bar__left">
+      <span>青森県十和田市 ・ 社会保険労務士事務所</span>
+      <span class="dot"></span>
+      <span>営業時間 8:30 – 17:30（土日祝休）</span>
+      <span class="dot item-mail"></span>
+      <span class="item-mail">tani-sr-office@ab.auone-net.jp</span>
+    </div>
+    <div class="utility-bar__right">
+      <a href="contact.html">お問い合わせ</a>
+      <a href="about.html#access">アクセス</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark brand__mark--img"><img src="assets/sr-emblem.jpg" alt="谷川社会保険労務士事務所 エンブレム"></span>
+      <span class="brand__text">
+        <span class="brand__name">谷川社会保険労務士事務所</span>
+        <span class="brand__sub">TANIKAWA SHAROUSHI OFFICE</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="メインナビゲーション">
+      <a href="index.html">トップ</a>
+      <a href="about.html">事務所案内</a>
+      <a href="services.html">業務内容</a>
+      <a href="pricing.html">料金</a>
+      <a href="news.html">お知らせ</a>
+      <a href="faq.html" class="is-current">よくある質問</a>
+    </nav>
+    <div class="header-cta">
+      <div class="tel-block">
+        <span class="tel-block__label">TEL</span>
+        <span class="tel-block__num">0176-22-0725</span>
+        <span class="tel-block__hours">平日 8:30–17:30</span>
+      </div>
+      <a href="contact.html" class="btn btn--primary">ご相談はこちら<span class="arrow"></span></a>
+      <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer__panel">
+    <div class="mobile-drawer__header">
+      <span class="mobile-drawer__brand">谷川社会保険労務士事務所</span>
+      <button class="mobile-drawer__close" aria-label="閉じる">×</button>
+    </div>
+    <a href="index.html" class="m-link">トップ <span class="en">Home</span></a>
+    <a href="about.html" class="m-link">事務所案内 <span class="en">About</span></a>
+    <a href="services.html" class="m-link">業務内容 <span class="en">Services</span></a>
+    <a href="pricing.html" class="m-link">料金プラン <span class="en">Pricing</span></a>
+    <a href="news.html" class="m-link">お知らせ <span class="en">News</span></a>
+    <a href="faq.html" class="m-link">よくある質問 <span class="en">FAQ</span></a>
+    <a href="contact.html" class="m-link">お問い合わせ <span class="en">Contact</span></a>
+    <div class="mobile-drawer__cta">
+      <div class="mobile-drawer__tel">
+        <span class="l">TEL</span>
+        <span class="n">0176-22-0725</span>
+        <span class="h">平日 8:30 – 17:30</span>
+      </div>
+      <a href="contact.html" class="btn btn--primary">お問い合わせフォーム<span class="arrow"></span></a>
+    </div>
+  </div>
+</div>
+
+
+<section class="page-hero" style="--hero-photo: url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=1600&q=80&auto=format&fit=crop');">
+  <div class="page-hero__inner">
+    <div>
+      <div class="page-hero__sub">FAQ</div>
+      <h1 class="page-hero__title">よくある質問</h1>
+    </div>
+    <div class="breadcrumb">
+      <a href="index.html">トップ</a>
+      <span class="sep">/</span>
+      <span>よくある質問</span>
+    </div>
+  </div>
+</section>
+
+<section class="faq-page">
+  <div class="faq-page__inner">
+
+    <!-- Category: 相談・契約 -->
+    <div class="faq-category">
+      <div class="faq-category__head">
+        <span class="faq-category__num">01</span>
+        <h2 class="faq-category__name">ご相談・ご契約について</h2>
+      </div>
+
+      <details class="faq-item" open>
+        <summary>初回の相談は無料ですか？</summary>
+        <div class="faq-item__body">
+          <p>
+            はい、初回のご相談（1時間程度）は無料で承っております。事務所へのご訪問、お客様先への訪問、オンライン会議のいずれの形式にもご対応いたします。
+          </p>
+          <p>
+            「何を相談していいかわからない」「契約するかどうか決めていない」段階でも、まったく問題ございません。まずはお気軽にお問い合わせください。
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>顧問契約をしないと、業務をお願いできませんか？</summary>
+        <div class="faq-item__body">
+          <p>
+            いいえ、スポット（単発）でのご依頼も承っております。就業規則の作成、年に一度の算定基礎届、助成金の申請、労務トラブルへの個別対応など、ご依頼内容にあわせてお見積りいたします。
+          </p>
+          <p>
+            ただし、継続的なサポートが必要な場合は、月額顧問料でのご契約のほうが結果的にお得になることが多いです。詳しくは<a href="pricing.html">料金プラン</a>をご覧ください。
+          </p>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- Category: 業務範囲 -->
+    <div class="faq-category">
+      <div class="faq-category__head">
+        <span class="faq-category__num">02</span>
+        <h2 class="faq-category__name">業務範囲について</h2>
+      </div>
+
+      <details class="faq-item">
+        <summary>個人事業主でも依頼できますか？</summary>
+        <div class="faq-item__body">
+          <p>
+            はい、個人事業主の方からのご依頼も承っております。従業員を1名でも雇用される場合は、労働保険・社会保険の手続きが必要になりますので、開業準備の段階からお気軽にご相談ください。
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>個人（社員ではなく）の年金相談もできますか？</summary>
+        <div class="faq-item__body">
+          <p>
+            はい、個人の方の年金相談も承っております。老齢年金の受給見込額の試算、繰上げ・繰下げのご相談、障害年金や遺族年金の請求サポートまで、幅広く対応いたします。
+          </p>
+          <p>
+            ご相談時には「ねんきん定期便」や年金手帳など、年金に関する書類をお手元にご準備いただけるとスムーズです。
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>就業規則は、ひな形ベースで作っても問題ないですか？</summary>
+        <div class="faq-item__body">
+          <p>
+            厚生労働省や商工会議所から提供されるひな形は、最低限の法令対応としては機能します。しかし、それだけでは「会社を守る」「社員の納得感を高める」という観点では十分とは言えません。
+          </p>
+          <p>
+            業種・規模・社風・将来像によって、必要な条文や運用方法は大きく異なります。一度、その会社にあわせた規程設計を経験されることをおすすめします。
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>労働基準監督署から調査の連絡が来ました。対応をお願いできますか？</summary>
+        <div class="faq-item__body">
+          <p>
+            はい、労基署の調査（臨検監督）対応は当事務所の得意分野のひとつです。必要書類の準備、想定される指摘事項への対策、当日の立会いまで一貫してサポートいたします。
+          </p>
+          <p>
+            指摘を受けてからの是正対応ももちろん可能ですが、できれば調査連絡を受けた時点で早めにご相談いただくと、より万全に備えられます。
+          </p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Category: 料金・支払い -->
+    <div class="faq-category">
+      <div class="faq-category__head">
+        <span class="faq-category__num">03</span>
+        <h2 class="faq-category__name">料金・お支払いについて</h2>
+      </div>
+
+      <details class="faq-item">
+        <summary>料金はどのように決まりますか？</summary>
+        <div class="faq-item__body">
+          <p>
+            顧問料は、従業員数・業務範囲・業種の複雑度等を考慮してお見積りいたします。スポット業務は、内容ごとに固定料金または時間制でご提示いたします。
+          </p>
+          <p>
+            目安料金は<a href="pricing.html">料金プラン</a>のページに掲載しております。正確なお見積りは無料相談時にご提示いたしますので、お気軽にお問い合わせください。
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>支払い方法を教えてください。</summary>
+        <div class="faq-item__body">
+          <p>
+            原則として、月末締め・翌月末日払いの銀行振込でお願いしております。顧問契約の場合は、月額顧問料を毎月ご請求いたします。スポット業務は、業務完了後にご請求書をお送りいたします。
+          </p>
+          <p>
+            助成金の成功報酬部分については、受給確定後の後払いとなります。
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>顧問料の中に含まれる業務、含まれない業務を教えてください。</summary>
+        <div class="faq-item__body">
+          <p>
+            顧問プランによって異なりますが、おおむね「日常の労務相談」「法改正情報の提供」「定期的な訪問」が標準で含まれます。「給与計算」「就業規則の新規作成」「助成金申請」などは、別途オプションまたはスポット業務としてお見積りいたします。
+          </p>
+          <p>
+            ご契約前に、含まれる・含まれない業務を明確にした見積書をお出ししますので、ご安心ください。
+          </p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Help block -->
+    <div class="faq-help">
+      <div class="faq-help__head">
+        <div class="eyebrow">Still have questions?</div>
+        <h3>解決しなかった、より詳しく知りたい場合は</h3>
+        <p>お電話・お問い合わせフォームから、お気軽にご質問ください。<br>「相談していいか分からない」段階でも歓迎いたします。</p>
+      </div>
+      <div class="faq-help__actions">
+        <a href="contact.html" class="btn btn--gold">お問い合わせフォーム<span class="arrow"></span></a>
+        <a href="tel:0176-22-0725" class="btn" style="background:rgba(255,255,255,0.12); color:var(--white); border:1.5px solid rgba(255,255,255,0.6);">TEL 0176-22-0725</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mobile sticky CTA -->
+<div class="mobile-cta">
+  <a href="tel:0176-22-0725" class="tel-cta">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+    お電話
+  </a>
+  <a href="contact.html" class="form-cta">フォームでご相談 <span class="arrow"></span></a>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">
+        <span class="brand__mark brand__mark--img"><img src="assets/sr-emblem.jpg" alt="谷川社会保険労務士事務所 エンブレム"></span>
+        <span class="brand__text">
+          <span class="brand__name">谷川社会保険労務士事務所</span>
+          <span class="brand__sub">TANIKAWA SHAROUSHI OFFICE</span>
+        </span>
+      </a>
+      <p>
+        〒034-0041<br>
+        青森県十和田市大字相坂字白上280-20<br>
+        TEL 0176-22-0725 / FAX 050-3045-3453
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Service</h4>
+      <ul>
+        <li><a href="services.html#proc">手続き代行</a></li>
+        <li><a href="services.html#payroll">給与計算</a></li>
+        <li><a href="services.html#rules">就業規則</a></li>
+        <li><a href="services.html#consult">労務相談</a></li>
+        <li><a href="services.html#pension">年金相談</a></li>
+        <li><a href="services.html#subsidy">助成金</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Office</h4>
+      <ul>
+        <li><a href="about.html">事務所案内</a></li>
+        <li><a href="about.html#access">アクセス</a></li>
+        <li><a href="pricing.html">料金プラン</a></li>
+        <li><a href="news.html">お知らせ</a></li>
+        <li><a href="faq.html">よくある質問</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>
+        平日 8:30 – 17:30<br>
+        土日祝休<br><br>
+        tani-sr-office@<br>ab.auone-net.jp
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 TANIKAWA SHAROUSHI OFFICE. All Rights Reserved.</span>
+    <span><a href="privacy.html" style="color:rgba(255,255,255,0.6);">プライバシーポリシー</a> ・ Aomori / Towada</span>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const toggle = document.querySelector('.nav-toggle');
+  const drawer = document.getElementById('mobileDrawer');
+  if (!toggle || !drawer) return;
+  const closeBtn = drawer.querySelector('.mobile-drawer__close');
+  function open() {
+    drawer.classList.add('is-open');
+    toggle.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    drawer.classList.remove('is-open');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  toggle.addEventListener('click', () => drawer.classList.contains('is-open') ? close() : open());
+  closeBtn.addEventListener('click', close);
+  drawer.addEventListener('click', (e) => { if (e.target === drawer) close(); });
+  drawer.querySelectorAll('a.m-link').forEach(a => a.addEventListener('click', close));
+})();
+</script>
+</body>
+</html>

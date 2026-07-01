@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<template id="__bundler_thumbnail" data-bg-color="#7d4628">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#7d4628"/>
+    <circle cx="600" cy="320" r="120" fill="none" stroke="#d6b277" stroke-width="8"/>
+    <text x="600" y="360" font-family="serif" font-size="120" fill="#d6b277" text-anchor="middle">谷</text>
+    <text x="600" y="520" font-family="serif" font-size="64" fill="#faf3e6" text-anchor="middle" letter-spacing="8">お知らせ</text>
+    <rect x="450" y="580" width="300" height="4" fill="#c6a672"/>
+  </svg>
+</template>
+<title>お知らせ・新着情報 | 谷川社会保険労務士事務所</title>
+<meta name="description" content="谷川社会保険労務士事務所からの新着情報・お知らせ・労務コラム。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital@0;1&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+.news-page { background: var(--paper-light); padding: 100px 32px 130px; }
+.news-page__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 60px;
+}
+
+/* Filter tabs */
+.news-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+.news-tabs button {
+  background: none;
+  border: 0;
+  padding: 14px 22px;
+  font-family: var(--sans-jp);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--text-soft);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+.news-tabs button:hover { color: var(--navy); }
+.news-tabs button.is-active { color: var(--navy); }
+.news-tabs button.is-active::after {
+  content: "";
+  position: absolute;
+  left: 16px; right: 16px;
+  bottom: -1px;
+  height: 2px;
+  background: var(--gold);
+}
+.news-tabs button .count {
+  font-family: var(--serif-en);
+  color: var(--gold-deep);
+  font-size: 11px;
+  margin-left: 6px;
+}
+
+.article-list {
+  display: flex;
+  flex-direction: column;  border-top: 1px solid var(--line);
+}
+.source-note {
+  font-size: 12.5px;
+  line-height: 1.9;
+  color: var(--text-soft);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  padding: 14px 18px;
+  margin: 0 0 28px;
+  border-radius: var(--r-sm);
+}
+.src {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  padding: 2px 10px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+.article {
+  display: grid;
+  grid-template-columns: 110px 100px 1fr;
+  gap: 24px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  transition: background 0.2s;
+  color: var(--text);
+  text-decoration: none;
+  align-items: start;
+}
+.article:hover { background: var(--paper); }
+.article__date {
+  font-family: var(--serif-en);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--text-soft);
+  padding-top: 2px;
+}
+.article__tag {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  padding: 4px 10px;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+  border: 1px solid;
+}
+.article__tag[data-tag="info"] { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.article__tag[data-tag="news"] { background: var(--paper-warm); color: var(--gold-deep); border-color: var(--line); }
+.article__tag[data-tag="clm"] { background: var(--white); color: var(--text-soft); border-color: var(--line); }
+.article__tag[data-tag="sub"] { background: var(--leaf-deep); color: var(--white); border-color: var(--leaf-deep); }
+
+.article__body { display: flex; flex-direction: column; gap: 8px; }
+.article__title {
+  font-family: var(--serif-jp);
+  font-size: 17px;
+  color: var(--ink);
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+.article__excerpt {
+  font-size: 13.5px;
+  color: var(--text-soft);
+  line-height: 2;
+  margin: 0;
+}
+
+/* Sidebar */
+.news-side {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  position: sticky;
+  top: 100px;
+  align-self: start;
+}
+.side-block { background: var(--white); border: 1px solid var(--line); padding: 26px 24px; }
+.side-block h3 {
+  font-family: var(--serif-jp);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  color: var(--ink);
+  margin: 0 0 6px;
+  font-weight: 500;
+}
+.side-block .en {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: block;
+}
+.side-block ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.side-block ul li a {
+  font-size: 13px;
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.side-block ul li a:hover { color: var(--gold-deep); }
+.source-links li a {
+  border-bottom: 1px solid var(--line-soft);
+  line-height: 1.6;
+  padding: 8px 0;
+}
+.side-block ul li a .y {
+  font-family: var(--serif-en);
+  color: var(--text-mute);
+  font-size: 12px;
+}
+.side-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.side-tags span {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  padding: 5px 12px;
+  background: var(--paper);
+  color: var(--text-soft);
+  border: 1px solid var(--line);
+}
+
+@media (max-width: 1024px) {
+  .news-page__inner { grid-template-columns: 1fr; }
+  .news-side { position: static; flex-direction: row; flex-wrap: wrap; }
+  .side-block { flex: 1 1 240px; }
+  .article { grid-template-columns: 90px 80px 1fr; gap: 16px; padding: 20px 0; }
+}
+@media (max-width: 720px) {
+  .article { grid-template-columns: 1fr; gap: 8px; }
+  .article__date { font-size: 12px; }
+  .news-tabs { overflow-x: auto; }
+  .news-tabs button { padding: 12px 14px; font-size: 12px; flex-shrink: 0; }
+}
+</style>
+</head>
+<body data-screen-label="05 News">
+
+<div class="utility-bar">
+  <div class="utility-bar__inner">
+    <div class="utility-bar__left">
+      <span>青森県十和田市 ・ 社会保険労務士事務所</span>
+      <span class="dot"></span>
+      <span>営業時間 8:30 – 17:30（土日祝休）</span>
+      <span class="dot item-mail"></span>
+      <span class="item-mail">tani-sr-office@ab.auone-net.jp</span>
+    </div>
+    <div class="utility-bar__right">
+      <a href="contact.html">お問い合わせ</a>
+      <a href="about.html#access">アクセス</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark brand__mark--img"><img src="assets/sr-emblem.jpg" alt="谷川社会保険労務士事務所 エンブレム"></span>
+      <span class="brand__text">
+        <span class="brand__name">谷川社会保険労務士事務所</span>
+        <span class="brand__sub">TANIKAWA SHAROUSHI OFFICE</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="メインナビゲーション">
+      <a href="index.html">トップ</a>
+      <a href="about.html">事務所案内</a>
+      <a href="services.html">業務内容</a>
+      <a href="pricing.html">料金</a>
+      <a href="news.html" class="is-current">お知らせ</a>
+      <a href="faq.html">よくある質問</a>
+    </nav>
+    <div class="header-cta">
+      <div class="tel-block">
+        <span class="tel-block__label">TEL</span>
+        <span class="tel-block__num">0176-22-0725</span>
+        <span class="tel-block__hours">平日 8:30–17:30</span>
+      </div>
+      <a href="contact.html" class="btn btn--primary">ご相談はこちら<span class="arrow"></span></a>
+      <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer__panel">
+    <div class="mobile-drawer__header">
+      <span class="mobile-drawer__brand">谷川社会保険労務士事務所</span>
+      <button class="mobile-drawer__close" aria-label="閉じる">×</button>
+    </div>
+    <a href="index.html" class="m-link">トップ <span class="en">Home</span></a>
+    <a href="about.html" class="m-link">事務所案内 <span class="en">About</span></a>
+    <a href="services.html" class="m-link">業務内容 <span class="en">Services</span></a>
+    <a href="pricing.html" class="m-link">料金プラン <span class="en">Pricing</span></a>
+    <a href="news.html" class="m-link">お知らせ <span class="en">News</span></a>
+    <a href="faq.html" class="m-link">よくある質問 <span class="en">FAQ</span></a>
+    <a href="contact.html" class="m-link">お問い合わせ <span class="en">Contact</span></a>
+    <div class="mobile-drawer__cta">
+      <div class="mobile-drawer__tel">
+        <span class="l">TEL</span>
+        <span class="n">0176-22-0725</span>
+        <span class="h">平日 8:30 – 17:30</span>
+      </div>
+      <a href="contact.html" class="btn btn--primary">お問い合わせフォーム<span class="arrow"></span></a>
+    </div>
+  </div>
+</div>
+
+
+<section class="page-hero" style="--hero-photo: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80&auto=format&fit=crop');">
+  <div class="page-hero__inner">
+    <div>
+      <div class="page-hero__sub">News &amp; Information</div>
+      <h1 class="page-hero__title">お知らせ・新着情報</h1>
+    </div>
+    <div class="breadcrumb">
+      <a href="index.html">トップ</a>
+      <span class="sep">/</span>
+      <span>お知らせ</span>
+    </div>
+  </div>
+</section>
+
+<section class="news-page">
+  <div class="news-page__inner">
+    <div>
+      <div class="news-tabs">
+        <button class="is-active" data-filter="all">すべて<span class="count">7</span></button>
+        <button data-filter="nenkin">日本年金機構<span class="count">5</span></button>
+        <button data-filter="kenpo">協会けんぽ<span class="count">1</span></button>
+        <button data-filter="mhlw">厚生労働省<span class="count">1</span></button>
+      </div>
+
+      <p class="source-note">下記は厚生労働省「新着情報一覧」「雇用保険制度トピックス一覧」、全国健康保険協会（協会けんぽ）「お知らせ一覧」、日本年金機構「大切なお知らせ（事業所の方）」が令和8年（2026年）5月1日以降に公表した情報のうち、経営者・総務・事務ご担当者に関わりの深いものを当事務所が整理してご案内するものです。参照元の公式ページはサイドバーの「参照元リンク」よりご確認いただけます。</p>
+
+      <div class="article-list" id="articles">
+        <a href="https://www.nenkin.go.jp/oshirase/taisetu/jigyosho/2026/index.html" target="_blank" rel="noopener" class="article" data-cat="nenkin">
+          <span class="article__date">2026.05.26</span>
+          <span class="article__tag" data-tag="info">日本年金機構</span>
+          <div class="article__body">
+            <h3 class="article__title">戸籍等に氏名の振り仮名が記載されることにともなう年金に関するお願い</h3>
+            <p class="article__excerpt">戸籍への振り仮名記載制度の開始にともない、年金記録の氏名（カナ）に関するお願いが公表されています。従業員の氏名情報を扱う際にご確認ください。<span class="src">出典：日本年金機構</span></p>
+          </div>
+        </a>
+        <a href="https://www.nenkin.go.jp/shinsei/kounen/tekiyo/jigyosho/20141203-02.html" target="_blank" rel="noopener" class="article" data-cat="nenkin">
+          <span class="article__date">2026.05.22</span>
+          <span class="article__tag" data-tag="info">日本年金機構</span>
+          <div class="article__body">
+            <h3 class="article__title">適用事業所の名称・所在地変更（管轄外）届の様式・記入例を更新</h3>
+            <p class="article__excerpt">事業所の移転・名称変更（管轄をまたぐ場合）に提出する届出の様式と記入例が更新されました。移転をご予定の事業所はご確認を。<span class="src">出典：日本年金機構</span></p>
+          </div>
+        </a>
+        <a href="https://www.nenkin.go.jp/oshirase/taisetu/jigyosho/2026/index.html" target="_blank" rel="noopener" class="article" data-cat="nenkin">
+          <span class="article__date">2026.05.19</span>
+          <span class="article__tag" data-tag="info">日本年金機構</span>
+          <div class="article__body">
+            <h3 class="article__title">e-Gov電子申請における個人向けの一部手続きの受付終了</h3>
+            <p class="article__excerpt">e-Gov電子申請の一部手続きの受付終了についてお知らせが出ています。電子申請を利用されている事業所は対象手続きをご確認ください。<span class="src">出典：日本年金機構</span></p>
+          </div>
+        </a>
+        <a href="https://www.nenkin.go.jp/oshirase/taisetu/jigyosho/2026/index.html" target="_blank" rel="noopener" class="article" data-cat="nenkin">
+          <span class="article__date">2026.05.15</span>
+          <span class="article__tag" data-tag="info">日本年金機構</span>
+          <div class="article__body">
+            <h3 class="article__title">マイナポータルの計画停止に伴う「ねんきんネット」の一部機能制限</h3>
+            <p class="article__excerpt">マイナポータルの計画停止にあわせて「ねんきんネット」の一部機能が制限されます。利用予定の時期と重なる場合はご留意ください。<span class="src">出典：日本年金機構</span></p>
+          </div>
+        </a>
+        <a href="https://www.nenkin.go.jp/oshirase/taisetu/jigyosho/2026/index.html" target="_blank" rel="noopener" class="article" data-cat="nenkin">
+          <span class="article__date">2026.05.01</span>
+          <span class="article__tag" data-tag="info">日本年金機構</span>
+          <div class="article__body">
+            <h3 class="article__title">労働契約内容による年間収入での被扶養者の認定の取り扱いについて</h3>
+            <p class="article__excerpt">被扶養者認定における「年間収入」の取り扱いについて案内が出ています。パート・有期雇用の方の扶養手続きで必要書類とあわせてご確認を。<span class="src">出典：日本年金機構</span></p>
+          </div>
+        </a>
+        <a href="https://www.kyoukaikenpo.or.jp/news/" target="_blank" rel="noopener" class="article" data-cat="kenpo">
+          <span class="article__date">2026.05.29</span>
+          <span class="article__tag" data-tag="news">協会けんぽ</span>
+          <div class="article__body">
+            <h3 class="article__title">「協会けんぽマイナンバー専用ダイヤル」が令和8年5月29日で終了</h3>
+            <p class="article__excerpt">マイナンバーに関する専用ダイヤルが5月29日で終了します。今後のお問い合わせ方法は協会けんぽの最新のご案内をご確認ください。<span class="src">出典：協会けんぽ</span></p>
+          </div>
+        </a>
+        <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/topics_150897.html" target="_blank" rel="noopener" class="article" data-cat="mhlw">
+          <span class="article__date">2026.05.20</span>
+          <span class="article__tag" data-tag="sub">厚生労働省</span>
+          <div class="article__body">
+            <h3 class="article__title">労働保険の電子申請に関する特設サイトを案内（令和8年度）</h3>
+            <p class="article__excerpt">令和8年度の労働保険年度更新にあわせ、電子申請の特設サイトが案内されています。年度更新の電子申請をご検討の事業所はご活用ください。<span class="src">出典：厚生労働省</span></p>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+    <aside class="news-side">
+      <div class="side-block">
+        <h3>参照元カテゴリー</h3>
+        <span class="en">Category</span>
+        <ul>
+          <li><a href="#" data-filter="nenkin">日本年金機構 <span class="y">5</span></a></li>
+          <li><a href="#" data-filter="kenpo">協会けんぽ <span class="y">1</span></a></li>
+          <li><a href="#" data-filter="mhlw">厚生労働省 <span class="y">1</span></a></li>
+        </ul>
+      </div>
+      <div class="side-block">
+        <h3>月別アーカイブ</h3>
+        <span class="en">Archive</span>
+        <ul>
+          <li><a href="#" data-filter="all">2026年 5月 <span class="y">07</span></a></li>
+        </ul>
+      </div>
+      <div class="side-block">
+        <h3>タグ</h3>
+        <span class="en">Tags</span>
+        <div class="side-tags">
+          <span>就業規則</span>
+          <span>助成金</span>
+          <span>ハラスメント</span>
+          <span>年金</span>
+          <span>給与計算</span>
+          <span>労基署</span>
+          <span>働き方改革</span>
+          <span>育児休業</span>
+        </div>
+      </div>
+      <div class="side-block">
+        <h3>参照元リンク</h3>
+        <span class="en">Sources</span>
+        <ul class="source-links">
+          <li><a href="https://www.mhlw.go.jp/stf/new-info/" target="_blank" rel="noopener">厚生労働省　新着情報一覧 ↗</a></li>
+          <li><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/topics_150897.html" target="_blank" rel="noopener">厚生労働省　雇用保険制度トピックス一覧 ↗</a></li>
+          <li><a href="https://www.kyoukaikenpo.or.jp/news/" target="_blank" rel="noopener">全国健康保険協会（協会けんぽ）　お知らせ一覧 ↗</a></li>
+          <li><a href="https://www.nenkin.go.jp/oshirase/taisetu/jigyosho/2026/index.html" target="_blank" rel="noopener">日本年金機構　大切なお知らせ（事業所の方） ↗</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- Mobile sticky CTA -->
+<div class="mobile-cta">
+  <a href="tel:0176-22-0725" class="tel-cta">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+    お電話
+  </a>
+  <a href="contact.html" class="form-cta">フォームでご相談 <span class="arrow"></span></a>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">
+        <span class="brand__mark brand__mark--img"><img src="assets/sr-emblem.jpg" alt="谷川社会保険労務士事務所 エンブレム"></span>
+        <span class="brand__text">
+          <span class="brand__name">谷川社会保険労務士事務所</span>
+          <span class="brand__sub">TANIKAWA SHAROUSHI OFFICE</span>
+        </span>
+      </a>
+      <p>
+        〒034-0041<br>
+        青森県十和田市大字相坂字白上280-20<br>
+        TEL 0176-22-0725 / FAX 050-3045-3453
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Service</h4>
+      <ul>
+        <li><a href="services.html#proc">手続き代行</a></li>
+        <li><a href="services.html#payroll">給与計算</a></li>
+        <li><a href="services.html#rules">就業規則</a></li>
+        <li><a href="services.html#consult">労務相談</a></li>
+        <li><a href="services.html#pension">年金相談</a></li>
+        <li><a href="services.html#subsidy">助成金</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Office</h4>
+      <ul>
+        <li><a href="about.html">事務所案内</a></li>
+        <li><a href="about.html#access">アクセス</a></li>
+        <li><a href="pricing.html">料金プラン</a></li>
+        <li><a href="news.html">お知らせ</a></li>
+        <li><a href="faq.html">よくある質問</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>
+        平日 8:30 – 17:30<br>
+        土日祝休<br><br>
+        tani-sr-office@<br>ab.auone-net.jp
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 TANIKAWA SHAROUSHI OFFICE. All Rights Reserved.</span>
+    <span><a href="privacy.html" style="color:rgba(255,255,255,0.6);">プライバシーポリシー</a> ・ Aomori / Towada</span>
+  </div>
+</footer>
+
+<script>
+// Category filter — driven by the tabs and by the sidebar's category/archive shortcuts
+const newsTabsEl = document.querySelector('.news-tabs');
+const tabs = document.querySelectorAll('.news-tabs button');
+const sideFilterLinks = document.querySelectorAll('.news-side [data-filter]');
+const articles = document.querySelectorAll('#articles .article');
+
+function applyNewsFilter(filter) {
+  tabs.forEach(t => t.classList.toggle('is-active', t.getAttribute('data-filter') === filter));
+  articles.forEach(a => {
+    const cat = a.getAttribute('data-cat');
+    a.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
+  });
+}
+
+tabs.forEach(tab => tab.addEventListener('click', () => applyNewsFilter(tab.getAttribute('data-filter'))));
+sideFilterLinks.forEach(link => link.addEventListener('click', (e) => {
+  e.preventDefault();
+  applyNewsFilter(link.getAttribute('data-filter'));
+  newsTabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}));
+</script>
+
+<script>
+(function() {
+  const toggle = document.querySelector('.nav-toggle');
+  const drawer = document.getElementById('mobileDrawer');
+  if (!toggle || !drawer) return;
+  const closeBtn = drawer.querySelector('.mobile-drawer__close');
+  function open() {
+    drawer.classList.add('is-open');
+    toggle.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    drawer.classList.remove('is-open');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  toggle.addEventListener('click', () => drawer.classList.contains('is-open') ? close() : open());
+  closeBtn.addEventListener('click', close);
+  drawer.addEventListener('click', (e) => { if (e.target === drawer) close(); });
+  drawer.querySelectorAll('a.m-link').forEach(a => a.addEventListener('click', close));
+})();
+</script>
+</body>
+</html>
